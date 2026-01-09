@@ -50,21 +50,35 @@ body {
     color: var(--melinda-dark);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     line-height: 1.3;
 }
 
-h1 { font-size: 4rem; }
-h2 { font-size: 3rem; }
+h1 {
+    font-size: 4rem;
+}
 
-p, span, li {
+h2 {
+    font-size: 3rem;
+}
+
+p,
+span,
+li {
     font-weight: 500;
     color: var(--melinda-dark);
     line-height: 30px;
 }
 
-strong { font-weight: 600; }
+strong {
+    font-weight: 600;
+}
 
 /* ============================================
    NAVBAR - Gradient Nero → Blu Scuro su Scroll
@@ -158,7 +172,7 @@ strong { font-weight: 600; }
 }
 
 /* ============================================
-   HERO SECTION - Immagine Abbassata
+   HERO SECTION
 ============================================ */
 .hero-section {
     position: relative;
@@ -178,7 +192,8 @@ strong { font-weight: 600; }
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);  /* SOLO NERO TRASPARENTE */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* SOLO NERO TRASPARENTE */
     z-index: 1;
 }
 
@@ -186,7 +201,8 @@ strong { font-weight: 600; }
 .hero-section h1,
 .hero-section .display-3,
 .hero-section p,
-.hero-section .lead, .lead {
+.hero-section .lead,
+.lead {
     color: var(--melinda-white) !important;
 }
 
@@ -195,6 +211,7 @@ strong { font-weight: 600; }
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -258,6 +275,25 @@ strong { font-weight: 600; }
     font-weight: 700;
 }
 
+.counter-display {
+    font-family: 'Nunito', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 700;
+    min-height: 130px;
+    /* Stessa altezza del donut */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .counter-display {
+        font-size: 2.5rem;
+        min-height: 120px;
+    }
+}
+
 .donut-chart {
     width: 130px;
     height: 130px;
@@ -313,7 +349,9 @@ strong { font-weight: 600; }
 }
 
 @keyframes drawLine {
-    to { stroke-dashoffset: 0; }
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 .line-area {
@@ -322,7 +360,9 @@ strong { font-weight: 600; }
 }
 
 @keyframes fadeInArea {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 .data-point {
@@ -332,18 +372,36 @@ strong { font-weight: 600; }
     transition: r 0.2s ease;
 }
 
-.data-point:nth-child(6) { animation-delay: 1.8s; }
-.data-point:nth-child(7) { animation-delay: 2.0s; }
-.data-point:nth-child(8) { animation-delay: 2.2s; }
-.data-point:nth-child(9) { animation-delay: 2.4s; }
-.data-point:nth-child(10) { animation-delay: 2.6s; }
+.data-point:nth-child(6) {
+    animation-delay: 1.8s;
+}
+
+.data-point:nth-child(7) {
+    animation-delay: 2.0s;
+}
+
+.data-point:nth-child(8) {
+    animation-delay: 2.2s;
+}
+
+.data-point:nth-child(9) {
+    animation-delay: 2.4s;
+}
+
+.data-point:nth-child(10) {
+    animation-delay: 2.6s;
+}
 
 @keyframes popIn {
     0% {
         transform: scale(0);
         opacity: 0;
     }
-    70% { transform: scale(1.3); }
+
+    70% {
+        transform: scale(1.3);
+    }
+
     100% {
         transform: scale(1);
         opacity: 1;
@@ -407,7 +465,7 @@ strong { font-weight: 600; }
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.bg-light-melinda{
+.bg-light-melinda {
     background-color: #e8dfce;
 }
 
@@ -418,8 +476,12 @@ footer {
     background-color: var(--melinda-third) !important;
 }
 
-footer h1, footer h2, footer h3, 
-footer h4, footer h5, footer h6 {
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6 {
     color: var(--melinda-white) !important;
 }
 
@@ -507,8 +569,15 @@ footer h4, footer h5, footer h6 {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* ============================================
@@ -532,50 +601,57 @@ button:focus:not(:focus-visible),
    RESPONSIVE MOBILE
 ============================================ */
 @media (max-width: 768px) {
+
     #navbar-main,
     #navbar-main.scrolled {
         min-height: 80px;
     }
-    
+
     .hero-section {
-        background-position: center 65%;  /* Ancora più in basso su mobile */
+        background-position: center 65%;
+        /* Ancora più in basso su mobile */
     }
-    
+
     .logo-melinda {
         height: 35px;
         max-width: 140px;
     }
-    
-    h1 { font-size: 2.4rem; }
-    h2 { font-size: 2rem; }
-    
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
     .hero-section .display-3 {
         font-size: 2.2rem;
         line-height: 1.2;
     }
-    
+
     .counter-display {
         font-size: 2.5rem;
     }
-    
+
     .donut-chart {
         width: 110px;
         height: 110px;
     }
-    
+
     .donut-value {
         width: 65px;
         height: 65px;
         font-size: 16px;
     }
-    
+
     #backToTopBtn {
         width: 45px;
         height: 45px;
         bottom: 20px;
         right: 20px;
     }
-    
+
     #statistiche,
     #download {
         scroll-margin-top: 80px;
@@ -586,6 +662,7 @@ button:focus:not(:focus-visible),
    PRINT & ACCESSIBILITY
 ============================================ */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -596,16 +673,17 @@ button:focus:not(:focus-visible),
 }
 
 @media print {
+
     .navbar,
     footer,
     #backToTopBtn {
         display: none;
     }
-    
+
     body {
         padding-top: 0;
     }
-    
+
     .hero-section {
         min-height: auto;
         page-break-after: always;
