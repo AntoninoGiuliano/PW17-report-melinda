@@ -1,0 +1,613 @@
+/* ==================================
+   CUSTOM CSS - Melinda Sostenibilità v5.0 FINALE PULITO
+   Font Nunito | Palette Melinda Ufficiale
+================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+body {
+    scroll-behavior: smooth !important;
+}
+
+/* Assicura smooth scroll anche su elementi scrollabili */
+* {
+    scroll-behavior: smooth;
+}
+
+/* -- COLORI BRAND MELINDA -- */
+:root {
+    --melinda-primary: #E30613;
+    --melinda-secondary: #6ABF5B;
+    --melinda-third: #0A203F;
+    --melinda-dark: #222222;
+    --melinda-fourth: #F6F2ED;
+    --melinda-fifth: #DFDEDA;
+    --melinda-gray: #999999;
+    --melinda-gray-dark: #666666;
+    --melinda-gray-light: #CCCCCC;
+    --melinda-white: #FFFFFF;
+}
+
+/* -- FONT GLOBALE -- */
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    line-height: 30px;
+    padding-top: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--melinda-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 3rem; }
+
+p, span, li {
+    font-weight: 500;
+    color: var(--melinda-dark);
+    line-height: 30px;
+}
+
+strong { font-weight: 600; }
+
+/* ============================================
+   NAVBAR - Gradient Nero → Blu Scuro su Scroll
+============================================ */
+#navbar-main {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background: none;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    z-index: 9999999;
+    min-height: 100px;
+    padding: 0;
+    transition: all .2s ease-in-out;
+}
+
+#navbar-main.scrolled {
+    background: var(--melinda-third);
+    background-image: none;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    min-height: 100px;
+}
+
+#navbar-main .container {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+/* Nav Links */
+#navbar-main .nav-link {
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 8px;
+    color: var(--melinda-white);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+#navbar-main .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--melinda-secondary);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+#navbar-main .nav-link:hover::after,
+#navbar-main .nav-link.active::after {
+    width: 80%;
+}
+
+#navbar-main .nav-link:hover {
+    color: var(--melinda-secondary) !important;
+}
+
+/* Logo */
+.logo-melinda {
+    height: 45px;
+    width: auto;
+    max-width: 180px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.navbar-brand {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.navbar-brand:hover .logo-melinda {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+/* Toggle Mobile */
+#navbar-main .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+#navbar-main .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================
+   HERO SECTION - Immagine Abbassata
+============================================ */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+/* Overlay nero semplice 30% */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);  /* SOLO NERO TRASPARENTE */
+    z-index: 1;
+}
+
+/* Testo hero TUTTO BIANCO */
+.hero-section h1,
+.hero-section .display-3,
+.hero-section p,
+.hero-section .lead, .lead {
+    color: var(--melinda-white) !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================
+   SEZIONI - Padding per anchor scroll
+============================================ */
+#statistiche,
+#download {
+    padding-top: 5rem;
+    scroll-margin-top: 100px;
+}
+
+/* ============================================
+   BOTTONE CTA VERDE
+============================================ */
+.btn-melinda {
+    background-color: var(--melinda-secondary);
+    border: 2px solid var(--melinda-secondary);
+    color: var(--melinda-white);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 200px;
+    padding: 15px 50px;
+}
+
+.btn-melinda:hover {
+    background-color: var(--melinda-third);
+    border-color: var(--melinda-third);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(10, 32, 63, 0.4);
+    color: var(--melinda-white);
+}
+
+/* ============================================
+   CARDS & STATISTICS
+============================================ */
+.hover-lift {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+}
+
+.hover-lift:hover {
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.20) !important;
+}
+
+.counter-display {
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.donut-chart {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: conic-gradient(var(--melinda-secondary) 0deg 0deg, #e9ecef 0deg 360deg);
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.donut-chart:hover {
+    transform: scale(1.05);
+}
+
+.donut-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #495057;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   CHART SVG
+============================================ */
+.line-chart-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.line-chart {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+}
+
+.line-path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: drawLine 2.5s ease-out forwards;
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+.line-area {
+    opacity: 0;
+    animation: fadeInArea 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes fadeInArea {
+    to { opacity: 1; }
+}
+
+.data-point {
+    transform-origin: center;
+    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+    cursor: pointer;
+    transition: r 0.2s ease;
+}
+
+.data-point:nth-child(6) { animation-delay: 1.8s; }
+.data-point:nth-child(7) { animation-delay: 2.0s; }
+.data-point:nth-child(8) { animation-delay: 2.2s; }
+.data-point:nth-child(9) { animation-delay: 2.4s; }
+.data-point:nth-child(10) { animation-delay: 2.6s; }
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% { transform: scale(1.3); }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.data-point:hover {
+    r: 9;
+    filter: drop-shadow(0 4px 8px rgba(227, 6, 19, 0.4));
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.bg-melinda-dot {
+    background-color: var(--melinda-primary) !important;
+}
+
+/* ============================================
+   DOWNLOAD SECTION
+============================================ */
+.bg-gradient-melinda {
+    position: relative;
+    background-color: var(--melinda-fourth);
+    overflow: hidden;
+}
+
+.download-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.download-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-gradient-melinda .container {
+    position: relative;
+    z-index: 2;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bg-light-melinda{
+    background-color: #e8dfce;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer {
+    background-color: var(--melinda-third) !important;
+}
+
+footer h1, footer h2, footer h3, 
+footer h4, footer h5, footer h6 {
+    color: var(--melinda-white) !important;
+}
+
+.hover-underline {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+    width: 100%;
+}
+
+.hover-underline:hover {
+    color: var(--melinda-secondary) !important;
+}
+
+/* ============================================
+   BACK TO TOP BUTTON
+============================================ */
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background-color: var(--melinda-secondary);
+    border-radius: 50%;
+}
+
+#backToTopBtn.show {
+    display: flex;
+    opacity: 1;
+}
+
+#backToTopBtn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(106, 191, 91, 0.5);
+    background-color: var(--melinda-third);
+}
+
+/* ============================================
+   CARD CLICCABILE
+============================================ */
+.card-clickable {
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.card-clickable:hover {
+    transform: translateY(-18px) scale(1.05);
+    box-shadow: 0 28px 56px rgba(227, 6, 19, 0.25) !important;
+    border-color: rgba(227, 6, 19, 0.3);
+}
+
+.card-clickable .card-title {
+    transition: color 0.3s ease;
+}
+
+.card-clickable:hover .card-title {
+    color: var(--melinda-primary) !important;
+}
+
+.card-clickable:hover .bi-file-earmark-pdf-fill {
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ============================================
+   ACCESSIBILITÀ
+============================================ */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--melinda-secondary);
+    outline-offset: 4px;
+    box-shadow: none !important;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE
+============================================ */
+@media (max-width: 768px) {
+    #navbar-main,
+    #navbar-main.scrolled {
+        min-height: 80px;
+    }
+    
+    .hero-section {
+        background-position: center 65%;  /* Ancora più in basso su mobile */
+    }
+    
+    .logo-melinda {
+        height: 35px;
+        max-width: 140px;
+    }
+    
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 2rem; }
+    
+    .hero-section .display-3 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+    
+    .counter-display {
+        font-size: 2.5rem;
+    }
+    
+    .donut-chart {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .donut-value {
+        width: 65px;
+        height: 65px;
+        font-size: 16px;
+    }
+    
+    #backToTopBtn {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    #statistiche,
+    #download {
+        scroll-margin-top: 80px;
+    }
+}
+
+/* ============================================
+   PRINT & ACCESSIBILITY
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media print {
+    .navbar,
+    footer,
+    #backToTopBtn {
+        display: none;
+    }
+    
+    body {
+        padding-top: 0;
+    }
+    
+    .hero-section {
+        min-height: auto;
+        page-break-after: always;
+    }
+}
