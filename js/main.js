@@ -9,8 +9,6 @@
 (function() {
     'use strict';
 
-    console.log('🍎 Melinda JS inizializzato');
-
     // ============================================
     // 1. NAVBAR SCROLL EFFECT
     // ============================================
@@ -67,9 +65,7 @@
                 e.preventDefault();
                 e.stopPropagation();
                 
-                const href = target.getAttribute('href');
-                console.log('🎯 Smooth scroll verso:', href);
-                
+                const href = target.getAttribute('href');                
                 if (href === '#' || href === '') return;
                 
                 const targetElement = document.querySelector(href);
@@ -78,7 +74,6 @@
                     const navbarHeight = window.innerWidth <= 768 ? 80 : 100;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                     
-                    console.log('✅ Scrolling to position:', targetPosition);
                     smoothScroll(targetPosition, 1200);
                     
                     // Chiudi menu mobile se aperto
@@ -87,8 +82,6 @@
                         const bsCollapse = new bootstrap.Collapse(navCollapse);
                         bsCollapse.hide();
                     }
-                } else {
-                    console.log('❌ Target non trovato:', href);
                 }
                 
                 return false;
@@ -113,7 +106,6 @@
         
         backToTopBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('⬆️ Back to top');
             smoothScroll(0, 1000);
         });
     }
@@ -174,15 +166,144 @@
             counterObserver.observe(counter);
         });
         
-        console.log('✅ Counter observer attivo');
     } else {
         // Fallback senza observer (anima subito)
-        console.log('⚠️ IntersectionObserver non supportato, animo subito');
         document.querySelectorAll('.counter-display').forEach(function(counter) {
             animateCounter(counter);
         });
     }
 
+    // ============================================
+    // 8. DONUT CHART ANIMATION con Counter Dinamico
+    // ============================================
+    function animateDonutChart(donutElement) {
+        const percentage = parseInt(donutElement.getAttribute('data-percentage')) || 30;
+        const color = donutElement.getAttribute('data-color') || '#0ea5e9';
+        const valueElement = donutElement.querySelector('.donut-value');
+        
+        if (!valueElement) return;
+        
+        // Calcola i gradi (360° × percentuale)
+        const degrees = (percentage / 100) * 360;
+        
+        // Animazione simultanea: grafico + numero
+        let currentDegree = 0;
+        let currentNumber = 0;
+        const frames = 60; // Numero di frame per animazione
+        const degreeIncrement = degrees / frames;
+        const numberIncrement = percentage / frames;
+        let frame = 0;
+        
+        const animationInterval = setInterval(function() {
+            frame++;
+            currentDegree += degreeIncrement;
+            currentNumber += numberIncrement;
+            
+            if (frame >= frames) {
+                currentDegree = degrees;
+                currentNumber = percentage;
+                clearInterval(animationInterval);
+            }
+            
+            // Aggiorna background con conic-gradient
+            donutElement.style.background = `conic-gradient(
+                ${color} 0deg ${currentDegree}deg, 
+                #e5e7eb ${currentDegree}deg 360deg
+            )`;
+            
+            // Aggiorna numero centrale (arrotondato)
+            valueElement.textContent = Math.floor(currentNumber) + '%';
+            
+        }, 25); // ~40fps (1500ms totale / 60 frame)
+        
+        // Aggiungi classe per animazione rotazione
+        donutElement.classList.add('animated');
+    }
+
+    // Intersection Observer per donut chart
+    if ('IntersectionObserver' in window) {
+        const donutObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const donut = entry.target;
+                    
+                    // Evita doppie animazioni
+                    if (donut.classList.contains('donut-animated')) return;
+                    donut.classList.add('donut-animated');
+                    
+                    // Reset numero a 0 prima di animare
+                    const valueElement = donut.querySelector('.donut-value');
+                    if (valueElement) {
+                        valueElement.textContent = '0%';
+                    }
+                    
+                    // Avvia animazione dopo delay
+                    setTimeout(function() {
+                        animateDonutChart(donut);
+                    }, 300);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.donut-chart').forEach(function(donut) {
+            donutObserver.observe(donut);
+        });
+        
+    } else {
+        // Fallback senza observer
+        document.querySelectorAll('.donut-chart').forEach(function(donut) {
+            animateDonutChart(donut);
+        });
+    }
+
+
+    // ============================================
+    // 7. HERO FADE-IN LENTO (Forzato)
+    // ============================================
+    window.addEventListener('load', function() {
+        
+        const heroTitle = document.querySelector('#chi-siamo h1');
+        const heroText = document.querySelector('#chi-siamo .lead');
+        const heroButton = document.querySelector('#chi-siamo .btn-melinda');
+        
+        if (heroTitle && heroText && heroButton) {
+            // Imposta opacità 0 iniziale via JS
+            heroTitle.style.opacity = '0';
+            heroText.style.opacity = '0';
+            heroButton.style.opacity = '0';
+            
+            // Titolo - fade in dopo 500ms, durata 3000ms
+            setTimeout(function() {
+                fadeIn(heroTitle, 3000);
+            }, 500);
+            
+            // Paragrafo - fade in dopo 2000ms, durata 3500ms
+            setTimeout(function() {
+                fadeIn(heroText, 3500);
+            }, 2000);
+            
+            // Bottone - fade in dopo 4000ms, durata 2500ms
+            setTimeout(function() {
+                fadeIn(heroButton, 2500);
+            }, 4000);
+        }
+    });
+    
+    // Funzione fade-in graduale
+    function fadeIn(element, duration) {
+        let opacity = 0;
+        const interval = 50; // Update ogni 50ms
+        const increment = interval / duration;
+        
+        const fade = setInterval(function() {
+            opacity += increment;
+            if (opacity >= 1) {
+                opacity = 1;
+                clearInterval(fade);
+            }
+            element.style.opacity = opacity;
+        }, interval);
+    }
 
     // ============================================
     // 6. ACTIVE NAV LINK
@@ -217,7 +338,5 @@
             }
         });
     });
-
-    console.log('✅ Smooth scroll attivo!');
 
 })();
