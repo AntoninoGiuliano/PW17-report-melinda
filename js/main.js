@@ -1,8 +1,3 @@
-/*!
- * Melinda Sostenibilità - Main JavaScript
- * Smooth Scroll Garantito
- */
-
 // ============================================
 // SMOOTH SCROLL con jQuery-like animation
 // ============================================
@@ -12,6 +7,7 @@
     // ============================================
     // 1. NAVBAR SCROLL EFFECT
     // ============================================
+    // Gestisce l'effetto di cambio stile della navbar al scroll della pagina
     const navbar = document.getElementById('navbar-main');
     
     window.addEventListener('scroll', function() {
@@ -23,8 +19,9 @@
     });
 
     // ============================================
-    // 2. SMOOTH SCROLL FUNCTION (ROBUSTO)
+    // 2. SMOOTH SCROLL FUNCTION
     // ============================================
+    // Implementa uno scroll fluido verso una posizione con animazione easeInOutCubic
     function smoothScroll(target, duration) {
         duration = duration || 1000;
         
@@ -93,9 +90,11 @@
     // ============================================
     // 4. BACK TO TOP BUTTON
     // ============================================
+    // Gestisce la visibilità e il funzionamento del pulsante di ritorno alla cima della pagina
     const backToTopBtn = document.getElementById('backToTopBtn');
     
     if (backToTopBtn) {
+        // Mostra il bottone solo dopo che l'utente ha scrollato oltre i 300px
         window.addEventListener('scroll', function() {
             if (window.scrollY > 300) {
                 backToTopBtn.classList.add('show');
@@ -104,6 +103,7 @@
             }
         });
         
+        // Al click, riporta in alto la pagina con animazione fluida
         backToTopBtn.addEventListener('click', function(e) {
             e.preventDefault();
             smoothScroll(0, 1000);
@@ -111,8 +111,9 @@
     }
 
     // ============================================
-    // 5. COUNTER ANIMATION (CORRETTO)
+    // 5. COUNTER ANIMATION
     // ============================================
+    // Anima i numeri dei counter con incremento progressivo fino al valore target
     function animateCounter(element) {
         const target = parseInt(element.getAttribute('data-target'));
         const suffix = element.getAttribute('data-suffix') || '';
@@ -138,7 +139,7 @@
         }, duration / steps);
     }
 
-    // Intersection Observer per counters
+    // Intersection Observer per counters - anima solo quando gli elementi sono visibili
     if ('IntersectionObserver' in window) {
         const counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
@@ -176,6 +177,7 @@
     // ============================================
     // 8. DONUT CHART ANIMATION con Counter Dinamico
     // ============================================
+    // Crea un'animazione del grafico a ciambella con valore percentuale dinamico
     function animateDonutChart(donutElement) {
         const percentage = parseInt(donutElement.getAttribute('data-percentage')) || 30;
         const color = donutElement.getAttribute('data-color') || '#0ea5e9';
@@ -258,8 +260,9 @@
 
 
     // ============================================
-    // 7. HERO FADE-IN LENTO (Forzato)
+    // 7. HERO FADE-IN LENTO
     // ============================================
+    // Effetto di dissolvenza progressiva degli elementi dell'hero con timing scaglionato
     window.addEventListener('load', function() {
         
         const heroTitle = document.querySelector('#chi-siamo h1');
@@ -308,6 +311,7 @@
     // ============================================
     // 6. ACTIVE NAV LINK
     // ============================================
+    // Aggiorna il link della navbar attivo in base alla sezione visibile
     let sections = [];
     let navLinks = [];
 
