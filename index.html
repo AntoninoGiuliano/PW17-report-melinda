@@ -38,45 +38,48 @@
 
 <body>
 
-    <!-- Navbar fissa TRASPARENTE → BLU SCURO con logo SVG Melinda -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar-main" role="navigation"
-        aria-label="Menu di navigazione principale">
-        <div class="container">
-            <!-- Brand con LOGO SVG Melinda -->
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="#" aria-label="Melinda Home">
-                <img width="180" height="45" src="img/melinda-main-scritta.svg" class="logo-melinda"
-                    alt="Logo Melinda Cooperativa" decoding="async" loading="eager">
-            </a>
+    <header>
+        <!-- Navbar fissa TRASPARENTE → BLU SCURO con logo SVG Melinda -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar-main" role="navigation"
+            aria-label="Menu di navigazione principale">
+            <div class="container">
+                <!-- Brand con LOGO SVG Melinda -->
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="#" aria-label="Melinda Home">
+                    <img width="180" height="45" src="img/melinda-main-scritta.svg" class="logo-melinda"
+                        alt="Logo Melinda Cooperativa" decoding="async" loading="eager">
+                </a>
 
-            <!-- Toggle button mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Apri o chiudi menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- Toggle button mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Apri o chiudi menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- Menu navbar -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#chi-siamo" aria-label="Vai a Chi Siamo"
-                            aria-current="page">Chi Siamo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#statistiche" aria-label="Vai a Statistiche">Statistiche</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#download" aria-label="Vai a Download Report">Report</a>
-                    </li>
-                </ul>
+                <!-- Menu navbar -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#chi-siamo" aria-label="Vai a Chi Siamo"
+                                aria-current="page">Chi Siamo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#statistiche" aria-label="Vai a Statistiche">Statistiche</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#download" aria-label="Vai a Download Report">Report</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- SEZIONE 1: Hero Chi Siamo con Background Image Centrata -->
-    <section id="chi-siamo"
-        class="hero-section vh-100 d-flex align-items-center text-white text-center position-relative"
-        style="background-image: url('https://melinda.it/wp-content/uploads/2024/10/Presentazione-evento-Madrid-9-ottobre-DEF_page-0001-scaled.jpg');"
-        aria-labelledby="hero-title">
+    <main id="main-content">
+        <!-- SEZIONE 1: Hero Chi Siamo con Background Image Centrata -->
+        <section id="chi-siamo"
+            class="hero-section vh-100 d-flex align-items-center text-white text-center position-relative"
+            style="background-image: url('https://melinda.it/wp-content/uploads/2024/10/Presentazione-evento-Madrid-9-ottobre-DEF_page-0001-scaled.jpg');"
+            aria-labelledby="hero-title">
 
         <!-- Overlay gradient scuro -->
         <div class="hero-overlay" aria-hidden="true"></div>
@@ -358,6 +361,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer BLU SCURO -->
     <footer class="py-5 text-white" role="contentinfo" aria-label="Informazioni footer"
